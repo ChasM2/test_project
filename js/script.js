@@ -1,27 +1,21 @@
 /* Задание на урок:
 
-1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-'Сколько фильмов вы уже посмотрели?'
+1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
 
-2) Создать объект personalMovieDB и в него поместить такие свойства:
-    - count - сюда передается ответ на первый вопрос
-    - movies - в это свойство поместить пустой объект
-    - actors - тоже поместить пустой объект
-    - genres - сюда поместить пустой массив
-    - privat - в это свойство поместить boolean(логическое) значение false
+2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
+отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
+возвращаем пользователя к вопросам опять
 
-3) Задайте пользователю по два раза вопросы:
-    - 'Один из последних просмотренных фильмов?'
-    - 'На сколько оцените его?'
-Ответы стоит поместить в отдельные переменные
-Записать ответы в объект movies в формате: 
-    movies: {
-        'logan': '8.1'
-    }
+3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
+"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
+"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
 
-Проверить, чтобы все работало без ошибок в консоли */
+4) Потренироваться и переписать цикл еще двумя способами*/
 
 'use strict';
+
+// Код возьмите из предыдущего домашнего задания
+
 let numberOfFilms = +prompt("How much films have you seen?", "");
 
 let personalMovieDB = {
@@ -32,13 +26,33 @@ let personalMovieDB = {
     privat: false,
 };
 
-let lastWatched = prompt("What was your last watched film?", "");
-let opinionMark = prompt("What is your mark for it?", "");
+if (personalMovieDB.count < 10) {
+    alert("Просмотрено довольно мало фильмов");
+} else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+    alert("Вы классический зритель");
+} else if (personalMovieDB.count > 30) {
+    alert("Вы киноман");
+} else {
+    alert("Произошла ошибка");
+}
 
-let lastWatched1 = prompt("What was your last watched film?", "");
-let opinionMark1 = prompt("What is your mark for it?", "");
+let countOfAnsweredQuestions = 0;
+const haveToAnswerCount = 2;
 
-personalMovieDB.movies[lastWatched] = opinionMark;
-personalMovieDB.movies[lastWatched1] = opinionMark1;
+while(countOfAnsweredQuestions < haveToAnswerCount) {
+    let firstAnswer = prompt("What was your last watched film?", "");
+    if (firstAnswer == null || firstAnswer === "" || firstAnswer.length > 50) {
+        alert("The answer cannot be empty or more than 50 characters!");
+        continue;
+    }
+
+    let secondAnswer = prompt("What is your mark for it?", "");
+    if (secondAnswer == null || secondAnswer === "") {
+        continue;
+    }
+
+    personalMovieDB.movies[firstAnswer] = secondAnswer;
+    countOfAnsweredQuestions++;
+}
 
 console.log(personalMovieDB);
