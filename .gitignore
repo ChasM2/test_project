@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 1. Js\+React/node_modules/
+Debug
+obj
+*.db
