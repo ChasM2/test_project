@@ -21,3 +21,17 @@ alex.exit();
 
 console.log(ivan);
 console.log(alex);
+
+const person = {
+    name: "Alex",
+    age: 33,
+    parents: {
+        mom: 'Olga',
+        dad: 'Mike'
+    }
+};
+
+const clone = JSON.parse(JSON.stringify(person));
+clone.parents.mom = 'Ann';
+console.log(person);
+console.log(clone);
