@@ -26,3 +26,5 @@ yarn-error.log*
 Debug
 obj
 *.db
+node_modules
+package-lock.json
