@@ -300,38 +300,41 @@ window.addEventListener('DOMContentLoaded', () => {
         prev = document.querySelector('.offer__slider-prev'),
         next = document.querySelector('.offer__slider-next'),
         current = document.querySelector('#current'),
-        total = document.querySelector('#total');
+        total = document.querySelector('#total'),
+        slidesWrapper = document.querySelector('.offer__slider-wrapper'),
+        slidesFields = document.querySelector('.offer__slider-inner');
 
     let slideIndex = 1;
 
-    showSlides(slideIndex);
 
-    total.textContent = slides.length > 10 ? slides.length : `0${slides.length}`;
+    // showSlides(slideIndex);
 
-    function showSlides(n) {
-        if (n > slides.length) {
-            slideIndex = 1;
-        }
+    // total.textContent = slides.length > 10 ? slides.length : `0${slides.length}`;
 
-        if (n < 1) {
-            slideIndex = slides.length;
-        }
+    // function showSlides(n) {
+    //     if (n > slides.length) {
+    //         slideIndex = 1;
+    //     }
 
-        slides.forEach(item => item.style.display = 'none');
-        slides[slideIndex - 1].style.display = 'block';
+    //     if (n < 1) {
+    //         slideIndex = slides.length;
+    //     }
 
-        current.textContent = slideIndex > 10 ? slideIndex : `0${slideIndex}`;
-    }
+    //     slides.forEach(item => item.style.display = 'none');
+    //     slides[slideIndex - 1].style.display = 'block';
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
+    //     current.textContent = slideIndex > 10 ? slideIndex : `0${slideIndex}`;
+    // }
 
-    prev.addEventListener('click', () => {
-        plusSlides(-1);
-    });
+    // function plusSlides(n) {
+    //     showSlides(slideIndex += n);
+    // }
 
-    next.addEventListener('click', () => {
-        plusSlides(1);
-    });
+    // prev.addEventListener('click', () => {
+    //     plusSlides(-1);
+    // });
+
+    // next.addEventListener('click', () => {
+    //     plusSlides(1);
+    // });
 });
